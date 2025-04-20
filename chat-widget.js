@@ -619,9 +619,9 @@
                     <div class="error-text" id="name-error"></div>
                 </div>
                 <div class="form-field">
-                    <label class="form-label" for="chat-user-email">Email</label>
-                    <input type="email" id="chat-user-email" class="form-input" placeholder="Your email address" required>
-                    <div class="error-text" id="email-error"></div>
+                    <label class="form-label" for="chat-user-phone">Phone Number</label>
+                    <input type="tel" id="chat-user-phone" class="form-input" placeholder="e.g., 09360115065" required>
+                    <div class="error-text" id="phone-error"></div>
                 </div>
                 <button type="submit" class="submit-registration">Continue to Chat</button>
             </form>
@@ -675,9 +675,9 @@
     const userRegistration = chatWindow.querySelector('.user-registration');
     const chatWelcome = chatWindow.querySelector('.chat-welcome');
     const nameInput = chatWindow.querySelector('#chat-user-name');
-    const emailInput = chatWindow.querySelector('#chat-user-email');
+    const phoneInput = chatWindow.querySelector('#chat-user-phone');
     const nameError = chatWindow.querySelector('#name-error');
-    const emailError = chatWindow.querySelector('#email-error');
+    const phoneError = chatWindow.querySelector('#phone-error');
 
     // Helper function to generate unique session ID
     function createSessionId() {
@@ -713,10 +713,10 @@
         userRegistration.classList.add('active');
     }
 
-    // Validate email format
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+    // Validate phone number length (must be 11 digits)
+    function isValidPhoneNumber(phone) {
+        const phoneRegex = /^\d{11}$/;
+        return phoneRegex.test(phone);
     }
 
     // Handle registration form submission
@@ -725,13 +725,13 @@
         
         // Reset error messages
         nameError.textContent = '';
-        emailError.textContent = '';
+        phoneError.textContent = '';
         nameInput.classList.remove('error');
-        emailInput.classList.remove('error');
+        phoneInput.classList.remove('error');
         
         // Get values
         const name = nameInput.value.trim();
-        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
         
         // Validate
         let isValid = true;
@@ -742,13 +742,13 @@
             isValid = false;
         }
         
-        if (!email) {
-            emailError.textContent = 'Please enter your email';
-            emailInput.classList.add('error');
+        if (!phone) {
+            phoneError.textContent = 'Please enter your phone number';
+            phoneInput.classList.add('error');
             isValid = false;
-        } else if (!isValidEmail(email)) {
-            emailError.textContent = 'Please enter a valid email address';
-            emailInput.classList.add('error');
+        } else if (!isValidPhoneNumber(phone)) {
+            phoneError.textContent = 'Phone number must be exactly 11 digits (e.g., 09360115065)';
+            phoneInput.classList.add('error');
             isValid = false;
         }
         
@@ -763,7 +763,7 @@
             sessionId: conversationId,
             route: settings.webhook.route,
             metadata: {
-                userId: email,
+                userId: phone,
                 userName: name
             }
         }];
@@ -789,7 +789,7 @@
             const sessionResponseData = await sessionResponse.json();
             
             // Send user info as first message
-            const userInfoMessage = `Name: ${name}\nEmail: ${email}`;
+            const userInfoMessage = `Name: ${name}\nPhone: ${phone}`;
             
             const userInfoData = {
                 action: "sendMessage",
@@ -797,7 +797,7 @@
                 route: settings.webhook.route,
                 chatInput: userInfoMessage,
                 metadata: {
-                    userId: email,
+                    userId: phone,
                     userName: name,
                     isUserInfo: true
                 }
@@ -873,8 +873,8 @@
         isWaitingForResponse = true;
         
         // Get user info if available
-        const email = nameInput ? nameInput.value.trim() : "";
-        const name = emailInput ? emailInput.value.trim() : "";
+        const phone = phoneInput ? phoneInput.value.trim() : "";
+        const name = nameInput ? nameInput.value.trim() : "";
         
         const requestData = {
             action: "sendMessage",
@@ -882,7 +882,7 @@
             route: settings.webhook.route,
             chatInput: messageText,
             metadata: {
-                userId: email,
+                userId: phone,
                 userName: name
             }
         };
