@@ -78,7 +78,7 @@
             align-items: center;
             gap: 12px;
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
+            color: white
             position: relative;
             flex-direction: row; /* برای اطمینان از ترتیب درست */
         }
@@ -95,7 +95,7 @@
         .chat-assist-widget .chat-header-title {
             font-size: 16px;
             font-weight: 600;
-            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
+            color: white
         }
 
         .chat-assist-widget .chat-close-btn {
@@ -105,7 +105,7 @@
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.2);
             border: none;
-            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
+            color: white; /* تغییر از سفید به رنگ تیره‌تر */
             cursor: pointer;
             padding: 4px;
             display: flex;
@@ -151,7 +151,7 @@
             width: 100%;
             padding: 14px 20px;
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
+            color: white; /* تغییر از سفید به رنگ تیره‌تر */
             border: none;
             border-radius: var(--chat-radius-md);
             cursor: pointer;
@@ -317,7 +317,7 @@
 
         .chat-assist-widget .chat-submit {
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
+            color: white; /* تغییر از سفید به رنگ تیره‌تر */
             border: none;
             border-radius: var(--chat-radius-md);
             width: 48px;
@@ -347,7 +347,7 @@
             height: 56px;
             border-radius: var(--chat-radius-full);
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
+            color: white; /* تغییر از سفید به رنگ تیره‌تر */
             border: none;
             cursor: pointer;
             box-shadow: var(--chat-shadow-md);
@@ -519,7 +519,7 @@
             width: 100%;
             padding: 14px 20px;
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
+            color: white; /* تغییر از سفید به رنگ تیره‌تر */
             border: none;
             border-radius: var(--chat-radius-md);
             cursor: pointer;
