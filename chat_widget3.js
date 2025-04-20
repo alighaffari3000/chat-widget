@@ -308,7 +308,7 @@
         .chat-assist-widget .chat-textarea:focus {
             outline: none;
             border-color: var(--chat-color-primary);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 0 0 3px rgba(99, 133, 232, 0.2); /* تغییر سایه برای هماهنگی با تم آبی */
         }
 
         .chat-assist-widget .chat-textarea::placeholder {
@@ -499,7 +499,7 @@
         .chat-assist-widget .form-input:focus {
             outline: none;
             border-color: var(--chat-color-primary);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 0 0 3px rgba(99, 133, 232, 0.2); /* تغییر سایه برای هماهنگی با تم آبی */
         }
 
         .chat-assist-widget .form-input.error {
@@ -562,9 +562,13 @@
         style: {
             primaryColor: '#10b981', // Green
             secondaryColor: '#059669', // Darker green
+            tertiaryColor: '#047857', // Tertiary color
+            lightColor: '#d1fae5', // Light color
             position: 'right',
             backgroundColor: '#ffffff',
-            fontColor: '#1f2937'
+            fontColor: '#1f2937',
+            textLightColor: '#6b7280', // Light text color
+            borderColor: '#e5e7eb' // Border color
         },
         suggestedQuestions: [] // Default empty array for suggested questions
     };
@@ -579,7 +583,11 @@
                 ...window.ChatWidgetConfig.style,
                 // Force green colors if user provided purple
                 primaryColor: window.ChatWidgetConfig.style?.primaryColor === '#854fff' ? '#10b981' : (window.ChatWidgetConfig.style?.primaryColor || '#10b981'),
-                secondaryColor: window.ChatWidgetConfig.style?.secondaryColor === '#6b3fd4' ? '#059669' : (window.ChatWidgetConfig.style?.secondaryColor || '#059669')
+                secondaryColor: window.ChatWidgetConfig.style?.secondaryColor === '#6b3fd4' ? '#059669' : (window.ChatWidgetConfig.style?.secondaryColor || '#059669'),
+                tertiaryColor: window.ChatWidgetConfig.style?.tertiaryColor || '#047857',
+                lightColor: window.ChatWidgetConfig.style?.lightColor || '#d1fae5',
+                textLightColor: window.ChatWidgetConfig.style?.textLightColor || '#6b7280',
+                borderColor: window.ChatWidgetConfig.style?.borderColor || '#e5e7eb'
             },
             suggestedQuestions: window.ChatWidgetConfig.suggestedQuestions || defaultSettings.suggestedQuestions
         } : defaultSettings;
@@ -595,9 +603,12 @@
     // Apply custom colors
     widgetRoot.style.setProperty('--chat-widget-primary', settings.style.primaryColor);
     widgetRoot.style.setProperty('--chat-widget-secondary', settings.style.secondaryColor);
-    widgetRoot.style.setProperty('--chat-widget-tertiary', settings.style.secondaryColor);
+    widgetRoot.style.setProperty('--chat-widget-tertiary', settings.style.tertiaryColor);
+    widgetRoot.style.setProperty('--chat-widget-light', settings.style.lightColor);
     widgetRoot.style.setProperty('--chat-widget-surface', settings.style.backgroundColor);
     widgetRoot.style.setProperty('--chat-widget-text', settings.style.fontColor);
+    widgetRoot.style.setProperty('--chat-widget-text-light', settings.style.textLightColor);
+    widgetRoot.style.setProperty('--chat-widget-border', settings.style.borderColor);
 
     // Create chat panel
     const chatWindow = document.createElement('div');
@@ -630,7 +641,7 @@
                 </div>
                 <div class="form-field">
                     <label class="form-label" for="chat-user-phone">شماره موبایل</label>
-                    <input type="tel" id="chat-user-phone" class="form-input" placeholder="مثال: 09360115065" required>
+                    <input type="tel" id="chat-user-phone" class="form-input" placeholder="شماره همراه شما" required>
                     <div class="error-text" id="phone-error"></div>
                 </div>
                 <button type="submit" class="submit-registration">ادامه به گفتگو</button>
