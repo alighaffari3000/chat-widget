@@ -4,10 +4,16 @@
     if (window.N8nChatWidgetLoaded) return;
     window.N8nChatWidgetLoaded = true;
 
-    // Load font resource - using Poppins for a fresh look
-    const fontElement = document.createElement('link');
-    fontElement.rel = 'stylesheet';
-    fontElement.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap';
+    // Load font resource - using B Yekan for Persian text
+    const fontElement = document.createElement('style');
+    fontElement.textContent = `
+        @font-face {
+            font-family: 'B Yekan';
+            src: url('https://cdn.fontiran.com/free/BYekan.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+    `;
     document.head.appendChild(fontElement);
 
     // Apply widget styles with completely different design approach
@@ -30,7 +36,8 @@
             --chat-radius-lg: 20px;
             --chat-radius-full: 9999px;
             --chat-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: 'Poppins', sans-serif;
+            font-family: 'B Yekan', sans-serif;
+            direction: rtl; /* اضافه کردن جهت راست‌به‌چپ */
         }
 
         .chat-assist-widget .chat-window {
@@ -73,6 +80,7 @@
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
             color: white;
             position: relative;
+            flex-direction: row; /* برای اطمینان از ترتیب درست */
         }
 
         .chat-assist-widget .chat-header-logo {
@@ -92,7 +100,7 @@
 
         .chat-assist-widget .chat-close-btn {
             position: absolute;
-            right: 16px;
+            left: 16px; /* تغییر از right به left برای RTL */
             top: 50%;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.2);
@@ -132,6 +140,7 @@
             color: var(--chat-color-text);
             margin-bottom: 24px;
             line-height: 1.3;
+            text-align: center; /* برای اطمینان از وسط‌چینی */
         }
 
         .chat-assist-widget .chat-start-btn {
@@ -163,6 +172,7 @@
             font-size: 14px;
             color: var(--chat-color-text-light);
             margin: 0;
+            text-align: center;
         }
 
         .chat-assist-widget .chat-body {
@@ -212,7 +222,7 @@
         .chat-assist-widget .chat-bubble.user-bubble {
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
             color: white;
-            align-self: flex-end;
+            align-self: flex-start; /* تغییر از flex-end به flex-start برای RTL */
             border-bottom-right-radius: 4px;
             box-shadow: var(--chat-shadow-sm);
         }
@@ -220,7 +230,7 @@
         .chat-assist-widget .chat-bubble.bot-bubble {
             background: white;
             color: var(--chat-color-text);
-            align-self: flex-start;
+            align-self: flex-end; /* تغییر از flex-start به flex-end برای RTL */
             border-bottom-left-radius: 4px;
             box-shadow: var(--chat-shadow-sm);
             border: 1px solid var(--chat-color-light);
@@ -236,7 +246,7 @@
             border-radius: var(--chat-radius-md);
             border-bottom-left-radius: 4px;
             max-width: 80px;
-            align-self: flex-start;
+            align-self: flex-end; /* تغییر از flex-start به flex-end برای RTL */
             box-shadow: var(--chat-shadow-sm);
             border: 1px solid var(--chat-color-light);
         }
@@ -398,7 +408,7 @@
             flex-direction: column;
             gap: 8px;
             margin: 12px 0;
-            align-self: flex-start;
+            align-self: flex-end; /* تغییر از flex-start به flex-end برای RTL */
             max-width: 85%;
         }
 
@@ -407,7 +417,7 @@
             border: 1px solid var(--chat-color-light);
             border-radius: var(--chat-radius-md);
             padding: 10px 14px;
-            text-align: left;
+            text-align: right; /* تغییر از left به right برای RTL */
             font-size: 13px;
             color: var(--chat-color-text);
             cursor: pointer;
@@ -468,7 +478,7 @@
             display: flex;
             flex-direction: column;
             gap: 4px;
-            text-align: left;
+            text-align: right; /* تغییر از left به right برای RTL */
         }
 
         .chat-assist-widget .form-label {
@@ -606,24 +616,24 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
-                Start chatting
+                شروع گفتگو
             </button>
             <p class="chat-response-time">${settings.branding.responseTimeText}</p>
         </div>
         <div class="user-registration">
-            <h2 class="registration-title">Please enter your details to start chatting</h2>
+            <h2 class="registration-title">لطفاً اطلاعات خود را وارد کنید</h2>
             <form class="registration-form">
                 <div class="form-field">
-                    <label class="form-label" for="chat-user-name">Name</label>
-                    <input type="text" id="chat-user-name" class="form-input" placeholder="Your name" required>
+                    <label class="form-label" for="chat-user-name">نام</label>
+                    <input type="text" id="chat-user-name" class="form-input" placeholder="نام شما" required>
                     <div class="error-text" id="name-error"></div>
                 </div>
                 <div class="form-field">
-                    <label class="form-label" for="chat-user-phone">Phone Number</label>
-                    <input type="tel" id="chat-user-phone" class="form-input" placeholder="Your Phone Number" required>
+                    <label class="form-label" for="chat-user-phone">شماره موبایل</label>
+                    <input type="tel" id="chat-user-phone" class="form-input" placeholder="مثال: 09360115065" required>
                     <div class="error-text" id="phone-error"></div>
                 </div>
-                <button type="submit" class="submit-registration">Continue to Chat</button>
+                <button type="submit" class="submit-registration">ادامه به گفتگو</button>
             </form>
         </div>
     `;
@@ -633,7 +643,7 @@
         <div class="chat-body">
             <div class="chat-messages"></div>
             <div class="chat-controls">
-                <textarea class="chat-textarea" placeholder="Type your message here..." rows="1"></textarea>
+                <textarea class="chat-textarea" placeholder="پیام خود را اینجا تایپ کنید..." rows="1"></textarea>
                 <button class="chat-submit">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 2L11 13"></path>
@@ -656,7 +666,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
         </svg>
-        <span class="chat-launcher-text">Need help?</span>`;
+        <span class="chat-launcher-text">نیاز به کمک دارید؟</span>`;
     
     // Add elements to DOM
     widgetRoot.appendChild(chatWindow);
@@ -737,17 +747,17 @@
         let isValid = true;
         
         if (!name) {
-            nameError.textContent = 'Please enter your name';
+            nameError.textContent = 'لطفاً نام خود را وارد کنید';
             nameInput.classList.add('error');
             isValid = false;
         }
         
         if (!phone) {
-            phoneError.textContent = 'Please enter your phone number';
+            phoneError.textContent = 'لطفاً شماره موبایل خود را وارد کنید';
             phoneInput.classList.add('error');
             isValid = false;
         } else if (!isValidPhoneNumber(phone)) {
-            phoneError.textContent = 'Phone number must be exactly 11 digits (e.g., 09360115065)';
+            phoneError.textContent = 'شماره موبایل باید دقیقاً ۱۱ رقم باشد (مثال: 09360115065)';
             phoneInput.classList.add('error');
             isValid = false;
         }
@@ -789,7 +799,7 @@
             const sessionResponseData = await sessionResponse.json();
             
             // Send user info as first message
-            const userInfoMessage = `Name: ${name}\nPhone: ${phone}`;
+            const userInfoMessage = `نام: ${name}\nشماره موبایل: ${phone}`;
             
             const userInfoData = {
                 action: "sendMessage",
@@ -860,7 +870,7 @@
             // Show error message
             const errorMessage = document.createElement('div');
             errorMessage.className = 'chat-bubble bot-bubble';
-            errorMessage.textContent = "Sorry, I couldn't connect to the server. Please try again later.";
+            errorMessage.textContent = "متأسفانه نتوانستم به سرور متصل شوم. لطفاً دوباره امتحان کنید.";
             messagesContainer.appendChild(errorMessage);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
@@ -928,7 +938,7 @@
             // Show error message
             const errorMessage = document.createElement('div');
             errorMessage.className = 'chat-bubble bot-bubble';
-            errorMessage.textContent = "Sorry, I couldn't send your message. Please try again.";
+            errorMessage.textContent = "متأسفانه نتوانستم پیام شما را ارسال کنم. لطفاً دوباره امتحان کنید.";
             messagesContainer.appendChild(errorMessage);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         } finally {
