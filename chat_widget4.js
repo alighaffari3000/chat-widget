@@ -28,9 +28,9 @@
             --chat-color-text: var(--chat-widget-text, #1f2937);
             --chat-color-text-light: var(--chat-widget-text-light, #6b7280);
             --chat-color-border: var(--chat-widget-border, #e5e7eb);
-            --chat-shadow-sm: 0 1px 3px rgba(16, 185, 129, 0.1);
-            --chat-shadow-md: 0 4px 6px rgba(16, 185, 129, 0.15);
-            --chat-shadow-lg: 0 10px 15px rgba(16, 185, 129, 0.2);
+            --chat-shadow-sm: 0 1px 3px rgba(99, 133, 232, 0.1); /* تغییر از سبز به آبی */
+            --chat-shadow-md: 0 4px 6px rgba(99, 133, 232, 0.15); /* تغییر از سبز به آبی */
+            --chat-shadow-lg: 0 10px 15px rgba(99, 133, 232, 0.2); /* تغییر از سبز به آبی */
             --chat-radius-sm: 8px;
             --chat-radius-md: 12px;
             --chat-radius-lg: 20px;
@@ -78,7 +78,7 @@
             align-items: center;
             gap: 12px;
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: white;
+            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
             position: relative;
             flex-direction: row; /* برای اطمینان از ترتیب درست */
         }
@@ -95,7 +95,7 @@
         .chat-assist-widget .chat-header-title {
             font-size: 16px;
             font-weight: 600;
-            color: white;
+            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
         }
 
         .chat-assist-widget .chat-close-btn {
@@ -105,7 +105,7 @@
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.2);
             border: none;
-            color: white;
+            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
             cursor: pointer;
             padding: 4px;
             display: flex;
@@ -151,7 +151,7 @@
             width: 100%;
             padding: 14px 20px;
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: white;
+            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
             border: none;
             border-radius: var(--chat-radius-md);
             cursor: pointer;
@@ -204,7 +204,7 @@
         }
 
         .chat-assist-widget .chat-messages::-webkit-scrollbar-thumb {
-            background-color: rgba(16, 185, 129, 0.3);
+            background-color: rgba(99, 133, 232, 0.3); /* تغییر از سبز به آبی */
             border-radius: var(--chat-radius-full);
         }
 
@@ -254,7 +254,7 @@
         .chat-assist-widget .typing-dot {
             width: 8px;
             height: 8px;
-            background: var(--chat-color-primary);
+            background: var(--chat-color-tertiary); /* تغییر از سبز به آبی */
             border-radius: var(--chat-radius-full);
             opacity: 0.7;
             animation: typingAnimation 1.4s infinite ease-in-out;
@@ -308,7 +308,7 @@
         .chat-assist-widget .chat-textarea:focus {
             outline: none;
             border-color: var(--chat-color-primary);
-            box-shadow: 0 0 0 3px rgba(99, 133, 232, 0.2); /* تغییر سایه برای هماهنگی با تم آبی */
+            box-shadow: 0 0 0 3px rgba(99, 133, 232, 0.2); /* تغییر از سبز به آبی */
         }
 
         .chat-assist-widget .chat-textarea::placeholder {
@@ -317,7 +317,7 @@
 
         .chat-assist-widget .chat-submit {
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: white;
+            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
             border: none;
             border-radius: var(--chat-radius-md);
             width: 48px;
@@ -347,7 +347,7 @@
             height: 56px;
             border-radius: var(--chat-radius-full);
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: white;
+            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
             border: none;
             cursor: pointer;
             box-shadow: var(--chat-shadow-md);
@@ -499,7 +499,7 @@
         .chat-assist-widget .form-input:focus {
             outline: none;
             border-color: var(--chat-color-primary);
-            box-shadow: 0 0 0 3px rgba(99, 133, 232, 0.2); /* تغییر سایه برای هماهنگی با تم آبی */
+            box-shadow: 0 0 0 3px rgba(99, 133, 232, 0.2); /* تغییر از سبز به آبی */
         }
 
         .chat-assist-widget .form-input.error {
@@ -519,7 +519,7 @@
             width: 100%;
             padding: 14px 20px;
             background: linear-gradient(135deg, var(--chat-color-primary) 0%, var(--chat-color-secondary) 100%);
-            color: white;
+            color: #1A2A44; /* تغییر از سفید به رنگ تیره‌تر */
             border: none;
             border-radius: var(--chat-radius-md);
             cursor: pointer;
