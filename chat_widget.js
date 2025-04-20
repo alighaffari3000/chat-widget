@@ -620,7 +620,7 @@
                 </div>
                 <div class="form-field">
                     <label class="form-label" for="chat-user-phone">Phone Number</label>
-                    <input type="tel" id="chat-user-phone" class="form-input" placeholder="e.g., 09360115065" required>
+                    <input type="tel" id="chat-user-phone" class="form-input" placeholder="Your Phone Number" required>
                     <div class="error-text" id="phone-error"></div>
                 </div>
                 <button type="submit" class="submit-registration">Continue to Chat</button>
