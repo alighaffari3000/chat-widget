@@ -768,7 +768,7 @@
             phoneInput.classList.add('error');
             isValid = false;
         } else if (!isValidPhoneNumber(phone)) {
-            phoneError.textContent = 'شماره موبایل باید دقیقاً ۱۱ رقم باشد (مثال: 09360115065)';
+            phoneError.textContent = 'شماره موبایل باید دقیقاً ۱۱ رقم باشد (مثال: 09123456789)';
             phoneInput.classList.add('error');
             isValid = false;
         }
