@@ -555,8 +555,8 @@
             welcomeText: '',
             responseTimeText: '',
             poweredBy: {
-                text: 'Powered by n8n',
-                link: 'https://n8n.partnerlinks.io/fabimarkl'
+                text: 'Powered by NadinPayam',
+                link: 'https://nadinpayam.ir/'
             }
         },
         style: {
